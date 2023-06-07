@@ -1,0 +1,21 @@
+<div class="flex flex-col justify-end min-h-full hero">
+    <div class="flex xl:flex-row md:flex-col justify-center">
+        <div class="avatar">
+            <div class="w-52 rounded-xl">
+                <img [src]="(userInformation | async)!.profilePicturePath"/>
+            </div>
+        </div>
+        <div class="flex flex-col ml-8">
+            <p>{{ (userInformation | async)!.name}}</p>
+            <p>{{ (userInformation | async)!.age}}</p>
+            <p>{{ (userInformation | async)!.email}}</p>
+            <p>{{ (userInformation | async)!.homePrefecture}}</p>
+            <p>{{ (userInformation | async)!.detail}}</p>
+        </div>
+        
+    </div>
+    <div class="form-control mt-6 w-24">
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
+    </div>
+</div>
+

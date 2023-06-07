@@ -4,17 +4,17 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { LoginService } from './services/login.service';
 import { ProfileComponent } from './profile/profile.component';
 
-const userLoggedIn: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
-  const isLoggedIn = inject(LoginService).IsLoggedIn;
-  //redirectToLoginPage(isLoggedIn, route);
-  return isLoggedIn;
-}
+// const userLoggedIn: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
+//   const isLoggedIn = inject(LoginService).IsLoggedIn;
+//   //redirectToLoginPage(isLoggedIn, route);
+//   return isLoggedIn;
+// }
 
-const userLoggedOut: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
-  const isLoggedIn = inject(LoginService).IsLoggedIn;
-  //redirectToLoginPage(isLoggedIn, route);
-  return !isLoggedIn;
-}
+// const userLoggedOut: CanMatchFn = (route: Route, segments: UrlSegment[]) => {
+//   const isLoggedIn = inject(LoginService).IsLoggedIn;
+//   //redirectToLoginPage(isLoggedIn, route);
+//   return !isLoggedIn;
+// }
 
 const redirectToLoginPage = (userLoggedIn: boolean, route: Route): void => {
   const router = inject(Router)

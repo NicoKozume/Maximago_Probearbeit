@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { LoginResult, LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-screen',
@@ -7,11 +9,34 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent implements OnInit{
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
   
-  email = new FormControl('')
-  password = new FormControl('')
-  
-  ngOnInit(): void {
+  constructor(public loginService: LoginService, private router: Router) {
+
   }
 
+  ngOnInit(): void {
+    
+  }
+
+  public tryLogin(){
+    if(this.loginForm.valid){
+      const result = this.loginService.login(this.loginForm.value.email!, this.loginForm.value.password!)
+      if(result == LoginResult.Success){
+        this.loginForm.controls.password.setErrors({ loginFailure: false})
+        this.router.navigate(["profile"]);
+      }
+      else{
+        this.loginForm.controls.password.setErrors({loginFailure: true});
+      }
+    }
+  }
 }
+
+interface LoginInformation {
+  email: string,
+  password: string
+};
