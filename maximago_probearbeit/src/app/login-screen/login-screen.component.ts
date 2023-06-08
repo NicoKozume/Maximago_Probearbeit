@@ -8,18 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './login-screen.component.html',
   styleUrls: ['./login-screen.component.scss']
 })
-export class LoginScreenComponent implements OnInit{
+export class LoginScreenComponent{
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   });
   
   constructor(public loginService: LoginService, private router: Router) {
-
-  }
-
-  ngOnInit(): void {
-    
   }
 
   public tryLogin(){
@@ -35,8 +30,3 @@ export class LoginScreenComponent implements OnInit{
     }
   }
 }
-
-interface LoginInformation {
-  email: string,
-  password: string
-};
